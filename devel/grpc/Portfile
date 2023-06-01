@@ -202,13 +202,11 @@ if {[string match "py*" ${subport}]} {
                     "-DCMAKE_MAKE_PROGRAM=${python.bin} setup.py --no-user-cfg" \
                     -DCMAKE_MAKE_PROGRAM=[portbuild::build_getmaketype]
 
-    configure.args-replace \
-                    -DgRPC_ABSL_PROVIDER=package \
-                    -DgRPC_ABSL_PROVIDER=module
     configure.args-append \
                     -DPython_EXECUTABLE=${python.bin}
 
     build.env-append \
+                    GRPC_PYTHON_BUILD_SYSTEM_ABSL=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_CARES=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_RE2=1 \
@@ -216,6 +214,7 @@ if {[string match "py*" ${subport}]} {
                     GRPC_PYTHON_BUILD_WITH_CYTHON=1
 
     destroot.env-append \
+                    GRPC_PYTHON_BUILD_SYSTEM_ABSL=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_CARES=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1 \
                     GRPC_PYTHON_BUILD_SYSTEM_RE2=1 \
