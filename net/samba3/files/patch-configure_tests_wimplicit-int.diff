@@ -1,0 +1,142 @@
+ lib/replace/test/shared_mmap.c | 2 +-
+ lib/replace/test/snprintf.c    | 2 +-
+ source3/lib/util_sec.c         | 2 +-
+ tests/crypttest.c              | 2 +-
+ tests/ftruncate.c              | 2 +-
+ tests/getgroups.c              | 2 +-
+ tests/readlink.c               | 2 +-
+ tests/shared_mmap.c            | 2 +-
+ tests/summary.c                | 2 +-
+ tests/trivial.c                | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git ../lib/replace/test/shared_mmap.c ../lib/replace/test/shared_mmap.c
+index 50dad8d69648..c4eb613eced5 100644
+--- ../lib/replace/test/shared_mmap.c
++++ ../lib/replace/test/shared_mmap.c
+@@ -15,7 +15,7 @@
+ #define MAP_FILE 0
+ #endif
+ 
+-main()
++int main()
+ {
+ 	int *buf;
+ 	int i; 
+diff --git ../lib/replace/test/snprintf.c ../lib/replace/test/snprintf.c
+index d06630bcc98d..153b3ed5bde0 100644
+--- ../lib/replace/test/snprintf.c
++++ ../lib/replace/test/snprintf.c
+@@ -26,4 +26,4 @@ void foo(const char *format, ...)
+ 	printf("1");
+ 	exit(0);
+ }
+-main() { foo("hello"); }
++int main() { foo("hello"); }
+diff --git ../source3/lib/util_sec.c ../source3/lib/util_sec.c
+index b90a6f972e2f..d4a5510934e3 100644
+--- ../source3/lib/util_sec.c
++++ ../source3/lib/util_sec.c
+@@ -437,7 +437,7 @@ static int have_syscall(void)
+ 	return 0;
+ }
+ 
+-main()
++int main()
+ {
+         if (getuid() != 0) {
+ #if (defined(AIX) && defined(USE_SETREUID))
+diff --git ../tests/crypttest.c ../tests/crypttest.c
+index 0e500d548176..282975534421 100644
+--- ../tests/crypttest.c
++++ ../tests/crypttest.c
+@@ -789,7 +789,7 @@ static ufc_long *_ufc_doit(ufc_long l1, ufc_long l2, ufc_long r1, ufc_long r2, u
+ #define crypt ufc_crypt
+ #endif
+ 
+-main()
++int main(void)
+ {
+ 	char passwd[9];
+ 	char salt[9];
+diff --git ../tests/ftruncate.c ../tests/ftruncate.c
+index d3e5de3afbe6..46123762ef7c 100644
+--- ../tests/ftruncate.c
++++ ../tests/ftruncate.c
+@@ -11,7 +11,7 @@
+ #define DATA "conftest.trunc"
+ #define LEN 7663
+ 
+-main()
++int main(void)
+ {
+ 	int *buf;
+ 	int fd = open(DATA,O_RDWR|O_CREAT|O_TRUNC,0666);
+diff --git ../tests/getgroups.c ../tests/getgroups.c
+index 343fd5a184f9..ab5648030a8d 100644
+--- ../tests/getgroups.c
++++ ../tests/getgroups.c
+@@ -16,7 +16,7 @@
+ #include <unistd.h>
+ #include <grp.h>
+ 
+-main()
++int main(void)
+ {
+ 	int i;
+ 	int *igroups;
+diff --git ../tests/readlink.c ../tests/readlink.c
+index 3784288ba015..65311c2ff795 100644
+--- ../tests/readlink.c
++++ ../tests/readlink.c
+@@ -11,7 +11,7 @@
+ #define DATA "readlink.test"
+ #define FNAME "rdlnk.file"
+ 
+-main()
++int main(void)
+ {
+ 	char buf[7];
+ 	int ret;
+diff --git ../tests/shared_mmap.c ../tests/shared_mmap.c
+index 40d462302ef3..5c32a66c2998 100644
+--- ../tests/shared_mmap.c
++++ ../tests/shared_mmap.c
+@@ -15,7 +15,7 @@
+ #define MAP_FILE 0
+ #endif
+ 
+-main()
++int main(void)
+ {
+ 	int *buf;
+ 	int i; 
+diff --git ../tests/summary.c ../tests/summary.c
+index 886fc8da8801..e71419190459 100644
+--- ../tests/summary.c
++++ ../tests/summary.c
+@@ -2,7 +2,7 @@
+ 
+ void exit(int);
+ 
+-main()
++int main(void)
+ {
+     exit (0);
+ #if !(defined(HAVE_FCNTL_LOCK) || defined(HAVE_STRUCT_FLOCK64))
+diff --git ../tests/trivial.c ../tests/trivial.c
+index f7e96d8109c9..a137c8c9727e 100644
+--- ../tests/trivial.c
++++ ../tests/trivial.c
+@@ -1,7 +1,7 @@
+ 
+ void exit(int);
+ 
+-main()
++int main(void)
+ {
+ 	exit(0);
+ }
+-- 
+2.46.1
+

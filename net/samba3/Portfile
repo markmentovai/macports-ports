@@ -48,6 +48,7 @@ configure.args      --libdir=${prefix}/lib/${name} \
 
 patchfiles          patch-Makefile.in.diff \
                     patch-configure.diff \
+                    patch-configure_tests_wimplicit-int.diff \
                     patch-source_pkgconfig_all_pc_in.diff \
                     patch-implicit.diff \
                     patch-lib_system_smbd.c.diff
